@@ -77,7 +77,8 @@ http://localhost/sport-management-system/
 
 ## 📷 Screenshots
 
-<img width="1187" height="760" alt="Screenshot 2026-04-03 041320" src="https://github.com/user-attachments/assets/78e1458a-a15d-462d-90d0-585a8406e0a6" />
+<img width="1845" height="887" alt="Screenshot 2026-04-02 015213" src="https://github.com/user-attachments/assets/73da1727-0c68-4b06-8ce3-0be92480ada9" />
+
 
 
 ## 📈 Future Improvements
