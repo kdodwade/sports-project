@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sports Academy - Login</title>
+  <style>
+    body { 
+      margin:0; 
+      font-family:Arial,sans-serif; 
+      background:#f4f4f4; 
+      display:flex; 
+      justify-content:center; 
+      align-items:center; 
+      height:100vh; 
+    }
+    .login-box { 
+      background:white; 
+      padding:30px 40px; 
+      border-radius:12px; 
+      box-shadow:0 6px 20px rgba(0,0,0,0.1); 
+      width:320px; 
+      text-align:center;
+    }
+    h2 { 
+      color:#1e3c72; 
+      margin-bottom:20px; 
+    }
+    label { 
+      font-weight:bold; 
+      margin-top:10px; 
+      display:block; 
+      text-align:left;
+    }
+    input { 
+      width:100%; 
+      padding:8px; 
+      margin-top:5px; 
+      border-radius:6px; 
+      border:1px solid #ccc; 
+    }
+    button { 
+      margin-top:15px; 
+      width:100%; 
+      padding:10px; 
+      border:none; 
+      background:#1e3c72; 
+      color:white; 
+      border-radius:8px; 
+      font-weight:bold; 
+      cursor:pointer; 
+    }
+    button:hover { 
+      background:#17305a; 
+    }
+    .admin-btn { 
+      margin-top:10px; 
+      width:100%; 
+      padding:8px; 
+      font-size:14px; 
+      background:#1e90ff;  /* Blue color */
+      color:white; 
+      border-radius:6px; 
+      cursor:pointer; 
+      border:none;
+    }
+    .admin-btn:hover { 
+      background:#1a78d1;  /* Darker blue on hover */
+    }
+  </style>
+</head>
+<body>
+
+  <div class="login-box">
+    <h2>Login</h2>
+    <form onsubmit="return loginRedirect()">
+      <label>Username</label>
+      <input type="text" id="username" placeholder="Enter username" required>
+      <label>Password</label>
+      <input type="password" id="password" placeholder="Enter password" required>
+      <button type="submit">Login</button>
+    </form>
+    <!-- Admin Button -->
+    <button class="admin-btn" onclick="adminLogin()">Login as Admin</button>
+  </div>
+
+  <script>
+    function loginRedirect(){
+      // Redirect normal user to home page
+      window.location.href = "home.html";
+      return false; // prevent form submission
+    }
+
+    function adminLogin(){
+      // Redirect to admin.php page
+      window.location.href = "admin.php";
+    }
+  </script>
+
+</body>
+</html>

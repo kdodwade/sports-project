@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sports Academy — Registration</title>
+<link rel="stylesheet" href="style.css">
+<style>
+body{background:linear-gradient(135deg,#1e3c72 0%,#2a5298 60%,#1e3c72 100%);min-height:100vh;}
+.reg-wrap{max-width:700px;margin:0 auto;padding:30px 20px 60px;}
+.reg-card{background:white;border-radius:18px;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,0.3);}
+.reg-header{background:linear-gradient(135deg,#1e3c72,#2a5298);color:white;padding:32px 36px;text-align:center;}
+.reg-header h1{font-size:1.7rem;font-weight:800;margin-bottom:6px;}
+.reg-header p{opacity:.85;font-size:.92rem;margin:0;}
+.reg-body{padding:36px;}
+
+/* Steps */
+.steps{display:flex;margin-bottom:32px;}
+.step{flex:1;text-align:center;position:relative;}
+.step-circle{width:34px;height:34px;border-radius:50%;background:#eee;color:#aaa;font-weight:700;font-size:.85rem;display:flex;align-items:center;justify-content:center;margin:0 auto 6px;transition:all .3s;border:2px solid #eee;}
+.step-label{font-size:.72rem;color:#aaa;font-weight:600;letter-spacing:.3px;}
+.step.active .step-circle{background:var(--blue);color:white;border-color:var(--blue);}
+.step.active .step-label{color:var(--blue);}
+.step.done .step-circle{background:var(--green);color:white;border-color:var(--green);}
+.step.done .step-label{color:var(--green);}
+.step::after{content:'';position:absolute;top:17px;left:50%;width:100%;height:2px;background:#eee;z-index:-1;}
+.step:last-child::after{display:none;}
+.step.done::after{background:var(--green);}
+
+.step-panel{display:none;} .step-panel.active{display:block;}
+.step-btns{display:flex;justify-content:space-between;margin-top:24px;gap:12px;}
+.step-btns .btn{flex:1;}
+
+/* Sports multi-select grid */
+.sports-select-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:12px;margin-top:8px;}
+.sport-checkbox-item{position:relative;}
+.sport-checkbox-item input[type=checkbox]{position:absolute;opacity:0;width:0;height:0;}
+.sport-checkbox-label{display:flex;flex-direction:column;align-items:center;padding:16px 10px;border:2px solid var(--border);border-radius:12px;cursor:pointer;transition:all .2s;text-align:center;background:white;}
+.sport-checkbox-label:hover{border-color:var(--blue2);background:#f0f4ff;}
+.sport-checkbox-item input:checked + .sport-checkbox-label{border-color:var(--blue);background:linear-gradient(135deg,#e8effd,#d4e2f8);color:var(--blue);}
+.sport-checkbox-item input:checked + .sport-checkbox-label .check-mark{display:flex;}
+.sport-icon-big{font-size:2rem;margin-bottom:8px;}
+.sport-name-lbl{font-size:.85rem;font-weight:700;}
+.sport-fee-lbl{font-size:.75rem;color:var(--muted);margin-top:3px;}
+.check-mark{display:none;position:absolute;top:8px;right:8px;width:20px;height:20px;background:var(--blue);border-radius:50%;color:white;font-size:.7rem;align-items:center;justify-content:center;font-weight:700;}
+.sport-checkbox-item input:checked + .sport-checkbox-label .sport-fee-lbl{color:var(--blue2);}
+
+/* Fee summary */
+.fee-summary{background:linear-gradient(135deg,#f0f7ff,#e8effd);border:2px solid #c7d9f5;border-radius:12px;padding:18px 20px;margin-top:16px;display:none;}
+.fee-summary h4{color:var(--blue);font-size:.9rem;font-weight:700;margin-bottom:12px;}
+.fee-sum-row{display:flex;justify-content:space-between;padding:7px 0;border-bottom:1px dashed #c7d9f5;font-size:.87rem;}
+.fee-sum-row:last-child{border:none;font-weight:700;font-size:1rem;color:var(--blue);padding-top:10px;}
+.fee-sum-row:last-child span:last-child{color:var(--green);}
+.selected-sports-tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px;}
+.sport-tag{background:var(--blue);color:white;padding:4px 14px;border-radius:50px;font-size:.78rem;font-weight:700;}
+
+/* Confirm summary */
+.summary-box{background:#f7f9fc;border-radius:10px;padding:18px 22px;margin:16px 0;}
+.summary-row{display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid #eee;font-size:.88rem;}
+.summary-row:last-child{border:none;}
+.summary-row .key{color:var(--muted);font-weight:600;}
+.summary-row .val{font-weight:700;}
+.confirm-sports{display:flex;flex-wrap:wrap;gap:6px;margin-top:4px;}
+
+/* Warning box */
+.warn-box{background:#fff3cd;border-left:4px solid #f39c12;padding:12px 16px;border-radius:8px;font-size:.85rem;color:#856404;margin-bottom:16px;}
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="logo">&#x1F3C6; <span style="color:var(--gold)">Sports</span> Academy</div>
+  <nav class="site-nav">
+    <a href="home.html">&#x1F3E0; Home</a>
+    <a href="sports.php">&#x26BD; Sports</a>
+    <a href="coaches.php">&#x1F3C6; Coaches</a>
+    <a href="attendance.php">&#x1F4CB; Attendance</a>
+    <a href="feedback.php">&#x1F4AC; Feedback</a>
+    <a href="payment.php">&#x1F4B3; Payment</a>
+    <a href="admin.php">&#x1F512; Admin</a>
+    <a href="registration.html" class="btn-nav active">&#x270F; Register</a>
+  </nav>
+</header>
+
+<div class="reg-wrap">
+  <div class="reg-card">
+    <div class="reg-header">
+      <h1>&#x270F; Player Registration</h1>
+      <p>Join Sports Academy — Select one or more sports to enroll</p>
+    </div>
+    <div class="reg-body">
+
+      <!-- Steps -->
+      <div class="steps">
+        <div class="step active" id="si-1"><div class="step-circle">1</div><div class="step-label">PERSONAL</div></div>
+        <div class="step"       id="si-2"><div class="step-circle">2</div><div class="step-label">SPORTS</div></div>
+        <div class="step"       id="si-3"><div class="step-circle">3</div><div class="step-label">CONFIRM</div></div>
+      </div>
+
+      <form id="regForm" action="register.php" method="POST" novalidate>
+
+        <!-- ── STEP 1: Personal Details ── -->
+        <div class="step-panel active" id="sp-1">
+          <div class="form-grid cols-2">
+            <div class="form-group span-2">
+              <label class="form-label">Full Name <span style="color:var(--red)">*</span></label>
+              <input type="text" class="form-control" id="r_name" name="full_name"
+                     placeholder="e.g. Rahul Sharma" maxlength="100" autocomplete="name">
+              <span class="field-msg" id="err_name"></span>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Age <span style="color:var(--red)">*</span></label>
+              <input type="number" class="form-control" id="r_age" name="age" placeholder="e.g. 18" min="5" max="60">
+              <span class="field-msg" id="err_age"></span>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Gender <span style="color:var(--red)">*</span></label>
+              <select class="form-control" id="r_gender" name="gender">
+                <option value="">-- Select --</option>
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+                <option value="Other">Other</option>
+              </select>
+              <span class="field-msg" id="err_gender"></span>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Phone Number <span style="color:var(--red)">*</span></label>
+              <input type="tel" class="form-control" id="r_phone" name="phone"
+                     placeholder="10-digit mobile number" maxlength="10">
+              <span class="field-msg" id="err_phone"></span>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Email Address <span style="color:var(--red)">*</span></label>
+              <input type="email" class="form-control" id="r_email" name="email"
+                     placeholder="you@gmail.com" autocomplete="email">
+              <span class="field-msg" id="err_email"></span>
+            </div>
+          </div>
+          <div class="step-btns">
+            <a href="home.html" class="btn btn-outline">&#x2190; Home</a>
+            <button type="button" class="btn btn-primary" onclick="goStep2()">Next: Choose Sports &#x2192;</button>
+          </div>
+        </div>
+
+        <!-- ── STEP 2: Sport Selection ── -->
+        <div class="step-panel" id="sp-2">
+          <div style="margin-bottom:6px;">
+            <label class="form-label">Select Sports <span style="color:var(--red)">*</span>
+              <span style="font-weight:400;color:var(--muted);"> — you can choose more than one</span>
+            </label>
+          </div>
+
+          <div class="sports-select-grid" id="sportsGrid">
+            <!-- Outdoor -->
+            <div class="sport-checkbox-item">
+              <input type="checkbox" name="sports[]" id="sp_cricket" value="Cricket" data-fee="2000">
+              <label for="sp_cricket" class="sport-checkbox-label">
+                <span class="check-mark">&#x2714;</span>
+                <span class="sport-icon-big">&#x1F3CF;</span>
+                <span class="sport-name-lbl">Cricket</span>
+                <span class="sport-fee-lbl">&#8377;2,000/month</span>
+              </label>
+            </div>
+            <div class="sport-checkbox-item">
+              <input type="checkbox" name="sports[]" id="sp_football" value="Football" data-fee="1800">
+              <label for="sp_football" class="sport-checkbox-label">
+                <span class="check-mark">&#x2714;</span>
+                <span class="sport-icon-big">&#x26BD;</span>
+                <span class="sport-name-lbl">Football</span>
+                <span class="sport-fee-lbl">&#8377;1,800/month</span>
+              </label>
+            </div>
+            <div class="sport-checkbox-item">
+              <input type="checkbox" name="sports[]" id="sp_hockey" value="Hockey" data-fee="1800">
+              <label for="sp_hockey" class="sport-checkbox-label">
+                <span class="check-mark">&#x2714;</span>
+                <span class="sport-icon-big">&#x1F3D1;</span>
+                <span class="sport-name-lbl">Hockey</span>
+                <span class="sport-fee-lbl">&#8377;1,800/month</span>
+              </label>
+            </div>
+            <div class="sport-checkbox-item">
+              <input type="checkbox" name="sports[]" id="sp_basketball" value="Basketball" data-fee="2000">
+              <label for="sp_basketball" class="sport-checkbox-label">
+                <span class="check-mark">&#x2714;</span>
+                <span class="sport-icon-big">&#x1F3C0;</span>
+                <span class="sport-name-lbl">Basketball</span>
+                <span class="sport-fee-lbl">&#8377;2,000/month</span>
+              </label>
+            </div>
+            <!-- Indoor -->
+            <div class="sport-checkbox-item">
+              <input type="checkbox" name="sports[]" id="sp_carrom" value="Carrom" data-fee="1000">
+              <label for="sp_carrom" class="sport-checkbox-label">
+                <span class="check-mark">&#x2714;</span>
+                <span class="sport-icon-big">&#x1F3AF;</span>
+                <span class="sport-name-lbl">Carrom</span>
+                <span class="sport-fee-lbl">&#8377;1,000/month</span>
+              </label>
+            </div>
+            <div class="sport-checkbox-item">
+              <input type="checkbox" name="sports[]" id="sp_chess" value="Chess" data-fee="800">
+              <label for="sp_chess" class="sport-checkbox-label">
+                <span class="check-mark">&#x2714;</span>
+                <span class="sport-icon-big">&#x265F;</span>
+                <span class="sport-name-lbl">Chess</span>
+                <span class="sport-fee-lbl">&#8377;800/month</span>
+              </label>
+            </div>
+            <div class="sport-checkbox-item">
+              <input type="checkbox" name="sports[]" id="sp_tt" value="Table Tennis" data-fee="1200">
+              <label for="sp_tt" class="sport-checkbox-label">
+                <span class="check-mark">&#x2714;</span>
+                <span class="sport-icon-big">&#x1F3D3;</span>
+                <span class="sport-name-lbl">Table Tennis</span>
+                <span class="sport-fee-lbl">&#8377;1,200/month</span>
+              </label>
+            </div>
+          </div>
+          <span id="err_sports" style="font-size:.78rem;color:var(--red);display:none;margin-top:8px;display:none;">Please select at least one sport.</span>
+
+          <!-- Fee Summary — shows dynamically -->
+          <div class="fee-summary" id="feeSummary">
+            <h4>&#x1F4B0; Fee Summary</h4>
+            <div id="feeSummaryRows"></div>
+            <div class="fee-sum-row">
+              <span>Registration Fee (one-time)</span>
+              <span>&#8377;500</span>
+            </div>
+            <div class="fee-sum-row">
+              <span>Total Monthly Fee</span>
+              <span id="totalMonthlyFee">&#8377;0</span>
+            </div>
+            <div class="fee-sum-row">
+              <span>Total at Joining (1st month + reg)</span>
+              <span id="totalAtJoining">&#8377;0</span>
+            </div>
+          </div>
+
+          <div class="step-btns">
+            <button type="button" class="btn btn-outline" onclick="goStep(1)">&#x2190; Back</button>
+            <button type="button" class="btn btn-primary" onclick="goStep3()">Next: Confirm &#x2192;</button>
+          </div>
+        </div>
+
+        <!-- ── STEP 3: Confirm ── -->
+        <div class="step-panel" id="sp-3">
+          <div class="warn-box">&#x26A0; Please review all details before submitting. Contact admin to make changes after registration.</div>
+          <div class="summary-box" id="confirmBox"></div>
+          <div class="step-btns">
+            <button type="button" class="btn btn-outline" onclick="goStep(2)">&#x2190; Back</button>
+            <button type="submit" class="btn btn-success btn-lg">&#x2714; Confirm & Register</button>
+          </div>
+        </div>
+
+      </form>
+    </div>
+  </div>
+</div>
+
+<script>
+const sportFees = {Cricket:2000,Football:1800,Hockey:1800,Basketball:2000,Carrom:1000,Chess:800,'Table Tennis':1200};
+
+// ── Attach fee update to all checkboxes ───────────────────────────
+document.querySelectorAll('input[name="sports[]"]').forEach(cb => {
+  cb.addEventListener('change', updateFeeSummary);
+});
+
+function updateFeeSummary() {
+  const checked = [...document.querySelectorAll('input[name="sports[]"]:checked')];
+  const summary  = document.getElementById('feeSummary');
+  const rowsDiv  = document.getElementById('feeSummaryRows');
+
+  if (checked.length === 0) { summary.style.display='none'; return; }
+
+  let totalMonthly = 0;
+  let rowsHtml = '';
+  checked.forEach(cb => {
+    const fee = sportFees[cb.value] || 0;
+    totalMonthly += fee;
+    rowsHtml += `<div class="fee-sum-row"><span>&#x26BD; ${cb.value}</span><span>&#8377;${fee.toLocaleString('en-IN')}/month</span></div>`;
+  });
+
+  rowsDiv.innerHTML = rowsHtml;
+  document.getElementById('totalMonthlyFee').textContent = '₹' + totalMonthly.toLocaleString('en-IN');
+  document.getElementById('totalAtJoining').textContent  = '₹' + (totalMonthly + 500).toLocaleString('en-IN');
+  summary.style.display = 'block';
+}
+
+// ── Field validators ──────────────────────────────────────────────
+function setF(id, errId, ok, msg) {
+  const el=document.getElementById(id), err=document.getElementById(errId);
+  el.classList.toggle('is-err',!ok); el.classList.toggle('is-ok',ok);
+  if(err){ err.textContent=ok?'':msg; err.className='field-msg'+(ok?'':' err'); }
+  return ok;
+}
+function vName()  { return setF('r_name','err_name',/^[A-Za-z\s]{3,100}$/.test(document.getElementById('r_name').value.trim()),'Name must be 3+ letters only.'); }
+function vAge()   { const v=parseInt(document.getElementById('r_age').value); return setF('r_age','err_age',!isNaN(v)&&v>=5&&v<=60,'Age must be 5–60.'); }
+function vGender(){ return setF('r_gender','err_gender',document.getElementById('r_gender').value!=='','Please select your gender.'); }
+function vPhone() { return setF('r_phone','err_phone',/^[6-9][0-9]{9}$/.test(document.getElementById('r_phone').value.trim()),'10-digit number starting with 6–9.'); }
+function vEmail() { return setF('r_email','err_email',/^[^\s@]+@gmail\.com$/.test(document.getElementById('r_email').value.trim()),'Must be a valid @gmail.com address.'); }
+
+// Live
+document.getElementById('r_name').addEventListener('input',vName);
+document.getElementById('r_age').addEventListener('input',vAge);
+document.getElementById('r_gender').addEventListener('change',vGender);
+document.getElementById('r_phone').addEventListener('input',()=>{document.getElementById('r_phone').value=document.getElementById('r_phone').value.replace(/\D/g,'').substring(0,10);vPhone();});
+document.getElementById('r_email').addEventListener('input',vEmail);
+
+// ── Step navigation ───────────────────────────────────────────────
+function goStep(n) {
+  document.querySelectorAll('.step-panel').forEach(p=>p.classList.remove('active'));
+  document.getElementById('sp-'+n).classList.add('active');
+  for(let i=1;i<=3;i++){
+    const el=document.getElementById('si-'+i);
+    el.className='step'+(i===n?' active':i<n?' done':'');
+  }
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+function goStep2() {
+  if(vName()&vAge()&vGender()&vPhone()&vEmail()) goStep(2);
+}
+
+function goStep3() {
+  const checked=[...document.querySelectorAll('input[name="sports[]"]:checked')];
+  const errEl=document.getElementById('err_sports');
+  if(checked.length===0){ errEl.style.display='block'; return; }
+  errEl.style.display='none';
+
+  // Build confirm summary
+  let totalMonthly=0;
+  let sportsHtml='<div class="confirm-sports">';
+  checked.forEach(cb=>{ totalMonthly+=sportFees[cb.value]||0; sportsHtml+=`<span class="sport-tag">${cb.value}</span>`; });
+  sportsHtml+='</div>';
+
+  document.getElementById('confirmBox').innerHTML=`
+    <div class="summary-row"><span class="key">Full Name</span><span class="val">${document.getElementById('r_name').value.trim()}</span></div>
+    <div class="summary-row"><span class="key">Age</span><span class="val">${document.getElementById('r_age').value}</span></div>
+    <div class="summary-row"><span class="key">Gender</span><span class="val">${document.getElementById('r_gender').value}</span></div>
+    <div class="summary-row"><span class="key">Phone</span><span class="val">${document.getElementById('r_phone').value}</span></div>
+    <div class="summary-row"><span class="key">Email</span><span class="val">${document.getElementById('r_email').value.trim()}</span></div>
+    <div class="summary-row"><span class="key">Sports (${checked.length})</span><span class="val">${sportsHtml}</span></div>
+    <div class="summary-row"><span class="key">Monthly Fee</span><span class="val" style="color:var(--blue)">&#8377;${totalMonthly.toLocaleString('en-IN')}</span></div>
+    <div class="summary-row"><span class="key">Total at Joining</span><span class="val" style="color:var(--green)">&#8377;${(totalMonthly+500).toLocaleString('en-IN')}</span></div>
+  `;
+  goStep(3);
+}
+</script>
+</body>
+</html>

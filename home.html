@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sports Academy — Home</title>
+<link rel="stylesheet" href="style.css">
+<style>
+/* Video BG */
+.video-bg{position:fixed;top:0;left:0;width:100%;height:100%;object-fit:cover;z-index:-2;}
+.video-overlay{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(10,20,50,0.62);z-index:-1;}
+body{color:white;}
+.site-header{background:rgba(10,20,50,0.75);backdrop-filter:blur(8px);}
+
+/* Hero */
+.hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:40px 20px;}
+.hero-badge{background:rgba(245,166,35,0.2);border:1px solid var(--gold);color:var(--gold);padding:6px 18px;border-radius:50px;font-size:.82rem;font-weight:700;letter-spacing:1px;margin-bottom:20px;display:inline-block;}
+.hero h1{font-size:clamp(2.2rem,6vw,4rem);font-weight:800;line-height:1.15;margin-bottom:18px;text-shadow:0 2px 20px rgba(0,0,0,0.3);}
+.hero h1 span{color:var(--gold);}
+.hero p{font-size:1.15rem;opacity:.88;max-width:560px;margin-bottom:36px;}
+.hero-btns{display:flex;gap:14px;flex-wrap:wrap;justify-content:center;}
+.hero-btns a{padding:14px 32px;border-radius:10px;font-weight:700;font-size:1rem;transition:all .22s;}
+.btn-hero-primary{background:var(--gold);color:var(--blue);}
+.btn-hero-primary:hover{background:#e09410;transform:translateY(-2px);}
+.btn-hero-outline{background:transparent;border:2px solid rgba(255,255,255,.7);color:white;}
+.btn-hero-outline:hover{background:rgba(255,255,255,.15);}
+
+/* Stats strip */
+.stats-strip{display:flex;justify-content:center;gap:40px;flex-wrap:wrap;margin-top:56px;padding:26px 40px;background:rgba(255,255,255,.1);backdrop-filter:blur(8px);border-radius:16px;border:1px solid rgba(255,255,255,.15);}
+.strip-item{text-align:center;}
+.strip-item .big{font-size:2rem;font-weight:800;color:var(--gold);}
+.strip-item .lbl{font-size:.8rem;opacity:.8;letter-spacing:.5px;}
+
+/* Features */
+.features-section{padding:80px 22px;max-width:1150px;margin:0 auto;}
+.features-section h2{text-align:center;font-size:1.8rem;color:white;margin-bottom:10px;}
+.features-section .sub{text-align:center;opacity:.75;margin-bottom:48px;}
+.features-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:22px;}
+.feat-card{background:rgba(255,255,255,.1);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.15);border-radius:16px;padding:28px 22px;text-align:center;transition:all .22s;}
+.feat-card:hover{background:rgba(255,255,255,.18);transform:translateY(-4px);}
+.feat-icon{font-size:2.6rem;margin-bottom:14px;display:block;}
+.feat-card h3{font-size:1.05rem;margin-bottom:8px;}
+.feat-card p{font-size:.85rem;opacity:.78;line-height:1.5;}
+
+/* Sports strip */
+.sports-strip{padding:0 22px 80px;max-width:1150px;margin:0 auto;}
+.sports-strip h2{text-align:center;font-size:1.8rem;color:white;margin-bottom:36px;}
+.sport-pills{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;}
+.sport-pill{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);padding:10px 22px;border-radius:50px;font-weight:600;font-size:.9rem;transition:all .22s;cursor:pointer;}
+.sport-pill:hover{background:var(--gold);color:var(--blue);border-color:var(--gold);}
+</style>
+</head>
+<body>
+
+<video autoplay muted loop class="video-bg"><source src="videos/sports.mp4" type="video/mp4"></video>
+<div class="video-overlay"></div>
+
+<header class="site-header">
+  <div class="logo">&#x1F3C6; <span style="color:var(--gold)">Sports</span> Academy</div>
+  <nav class="site-nav">
+    <a href="home.html" class="active">&#x1F3E0; Home</a>
+    <a href="sports.php">&#x26BD; Sports</a>
+    <a href="coaches.php">&#x1F3C6; Coaches</a>
+    <a href="attendance.php">&#x1F4CB; Attendance</a>
+    <a href="feedback.php">&#x1F4AC; Feedback</a>
+    <a href="payment.php">&#x1F4B3; Payment</a>
+    <a href="admin.php">&#x1F512; Admin</a>
+    <a href="registration.html" class="btn-nav">&#x270F; Register</a>
+  </nav>
+</header>
+
+<div class="hero">
+  <span class="hero-badge">&#x2605; India's Premier Sports Academy</span>
+  <h1>Train Hard.<br><span>Play Smart.</span> Win Big.</h1>
+  <p>Join our world-class sports academy and unlock your true athletic potential with expert coaching and state-of-the-art facilities.</p>
+  <div class="hero-btns">
+    <a href="registration.html" class="btn-hero-primary">&#x270F; Register Now</a>
+    <a href="sports.php" class="btn-hero-outline">&#x26BD; Explore Sports</a>
+  </div>
+
+  <div class="stats-strip">
+    <div class="strip-item"><div class="big">500+</div><div class="lbl">PLAYERS</div></div>
+    <div class="strip-item"><div class="big">7+</div><div class="lbl">SPORTS</div></div>
+    <div class="strip-item"><div class="big">15+</div><div class="lbl">COACHES</div></div>
+    <div class="strip-item"><div class="big">10+</div><div class="lbl">YEARS</div></div>
+  </div>
+</div>
+
+<div class="features-section">
+  <h2>Why Choose Us?</h2>
+  <p class="sub">Everything you need to become a champion</p>
+  <div class="features-grid">
+    <div class="feat-card"><span class="feat-icon">&#x1F3C6;</span><h3>Expert Coaches</h3><p>Learn from experienced national-level coaches who bring out the best in every player.</p></div>
+    <div class="feat-card"><span class="feat-icon">&#x1F4CB;</span><h3>Smart Attendance</h3><p>Digital attendance tracking keeps parents and players informed at all times.</p></div>
+    <div class="feat-card"><span class="feat-icon">&#x1F4B3;</span><h3>Easy Payments</h3><p>Pay fees online or offline with instant receipts and payment history.</p></div>
+    <div class="feat-card"><span class="feat-icon">&#x1F4AC;</span><h3>Player Feedback</h3><p>We listen — players can submit feedback and we constantly improve our programs.</p></div>
+    <div class="feat-card"><span class="feat-icon">&#x1F3DB;</span><h3>Modern Facilities</h3><p>Top-notch grounds, courts, and equipment for every sport we offer.</p></div>
+    <div class="feat-card"><span class="feat-icon">&#x1F4C5;</span><h3>Flexible Timings</h3><p>Morning and evening batches available to suit every student's schedule.</p></div>
+  </div>
+</div>
+
+<div class="sports-strip">
+  <h2>Sports We Offer</h2>
+  <div class="sport-pills">
+    <a href="sports.php" class="sport-pill">&#x1F3CF; Cricket</a>
+    <a href="sports.php" class="sport-pill">&#x26BD; Football</a>
+    <a href="sports.php" class="sport-pill">&#x1F3C0; Basketball</a>
+    <a href="sports.php" class="sport-pill">&#x1F3D1; Hockey</a>
+    <a href="sports.php" class="sport-pill">&#x1F3D3; Table Tennis</a>
+    <a href="sports.php" class="sport-pill">&#x265F; Chess</a>
+    <a href="sports.php" class="sport-pill">&#x1F3AF; Carrom</a>
+  </div>
+</div>
+
+</body>
+</html>
